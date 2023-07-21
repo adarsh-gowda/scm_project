@@ -22,7 +22,7 @@ from src.utils import save_object,evaluate_models
 
 @dataclass
 class ModelTrainerConfig:
-    trained_model_file_path=os.path.join("artifacts","model.pkl")
+    trained_model_file_path=os.path.join("artifacts","modol.pkl")
 
 class ModelTrainer:
     def __init__(self):
@@ -32,6 +32,8 @@ class ModelTrainer:
     def initiate_model_trainer(self,train_array,test_array):
         try:
             logging.info("Split training and test input data")
+
+
             X_train,y_train,X_test,y_test=(
                 train_array[:,:-1],
                 np.ravel(train_array[:,-1].toarray()),

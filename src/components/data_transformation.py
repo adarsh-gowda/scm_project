@@ -16,7 +16,7 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path=os.path.join('artifacts',"proprocessor.pkl")
+    preprocessor_obj_file_path=os.path.join('artifacts',"preprocessor.pkl")
 
 class DataTransformation:
     def __init__(self):
@@ -29,7 +29,7 @@ class DataTransformation:
         '''
         try:
             numerical_columns = ['Pack Price', 'Weight (Kilograms)']
-            categorical_columns = ['Country', 'Fulfill Via', 'Vendor INCO Term','Vendor', 'Shipment Mode','Sub Classification', 'First Line Designation', 'Year']
+            categorical_columns = ['Country', 'Fulfill Via', 'Vendor INCO Term','Vendor', 'Shipment Mode','Sub Classification', 'First Line Designation']
 
             num_pipeline= Pipeline(
                 steps=[
@@ -77,7 +77,7 @@ class DataTransformation:
 
             preprocessing_obj=self.get_data_transformer_object()
 
-            target_column_name="Freight Cost (USD)"
+            # target_column_name="Freight Cost (USD)"
             # numerical_columns = ['Pack Price', 'Weight (Kilograms)']
 
             # input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)

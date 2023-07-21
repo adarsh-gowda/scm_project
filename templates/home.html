@@ -1,0 +1,318 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Shiping price prediction</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Shiping price prediction</legend>
+        </h1>
+        <div class="mb-3">
+            <label class="form-label">Country</label>
+            <select class="form-control" name="Country" placeholder="Enter Country" required>
+                <option class="placeholder" selected disabled value="">Enter Country</option>
+                <option value="Nigeria">
+                    Nigeria
+                </option>
+                <option value="C?e d'Ivoire">
+                    C?e d'Ivoire 
+                </option>
+                <option value="Uganda">
+                    Uganda
+                </option>
+                <option value="Vietnam">
+                    Vietnam
+                </option>
+                <option value="Haiti">
+                    Haiti
+                </option>
+                <option value="Mozambique">
+                    Mozambique 
+                </option>
+                <option value="Zimbabwe">
+                    Zimbabwe
+                </option>
+                <option value="Zambia">
+                    Zambia
+                </option>
+                <option value="Tanzania">
+                    Tanzania
+                </option>
+                <option value="Rwanda">
+                    Rwanda 
+                </option>
+                <option value="South Africa">
+                    South Africa 
+                </option>
+                <option value="Congo, DRC">
+                    Congo, DRC
+                </option>
+                <option value="Guyana">
+                    Guyana
+                </option>
+                <option value="Ethiopia">
+                    Ethiopia 
+                </option>
+                <option value="Burundi">
+                    Burundi
+                </option>
+                <option value="Cameroon">
+                    Cameroon
+                </option>
+                <option value="South Sudan">
+                    South Sudan
+                </option>
+                <option value="Ghana">
+                    Ghana 
+                </option>
+                <option value="Dominican Republic">
+                    Dominican Republic
+                </option>
+                <option value="Namibia">
+                    Namibia
+                </option>
+                <option value="Swaziland">
+                    Swaziland
+                </option>
+                <option value="Guatemala">
+                    Guatemala 
+                </option>
+                <option value="Benin">
+                    Benin
+                </option>
+                <option value="Libya">
+                    Libya
+                </option>
+                <option value="Malawi">
+                    Malawi
+                </option>
+                <option value="Afghanistan">
+                    Afghanistan 
+                </option>
+                <option value="Botswana">
+                    Botswana 
+                </option>
+                <option value="Angola">
+                    Angola
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Vendor</label>
+            <select class="form-control" name="Vendor" placeholder="Enter Vendor name" required>
+                <option class="placeholder" selected disabled value="">Enter Vendor</option>
+                <option value="SCMS from RDC">
+                    SCMS from RDC
+                </option>
+                <option value="Aurobindo Pharma Limited">
+                    Aurobindo Pharma Limited 
+                </option>
+                <option value="ABBVIE LOGISTICS (FORMERLY ABBOTT LOGISTICS BV)">
+                    ABBVIE LOGISTICS (FORMERLY ABBOTT LOGISTICS BV)
+                </option>
+                <option value="MYLAN LABORATORIES LTD (FORMERLY MATRIX LABORATORIES)">
+                    MYLAN LABORATORIES LTD (FORMERLY MATRIX LABORATORIES)
+                </option>
+                <option value="HETERO LABS LIMITED">
+                    HETERO LABS LIMITED
+                </option>
+                <option value="CIPLA LIMITED">
+                    CIPLA LIMITED 
+                </option>
+                <option value="STRIDES ARCOLAB LIMITED">
+                    STRIDES ARCOLAB LIMITED
+                </option>
+                <option value="MERCK SHARP & DOHME IDEA GMBH (FORMALLY MERCK SHARP & DOHME B.V.)">
+                    MERCK SHARP & DOHME IDEA GMBH (FORMALLY MERCK SHARP & DOHME B.V.)
+                </option>
+                <option value="BRISTOL-MYERS SQUIBB">
+                    BRISTOL-MYERS SQUIBB
+                </option>
+                <option value="ASPEN PHARMACARE">
+                    ASPEN PHARMACARE 
+                </option>
+                <option value="MICRO LABS LIMITED">
+                    MICRO LABS LIMITED 
+                </option>
+                <option value="EMCURE PHARMACEUTICALS LTD">
+                    EMCURE PHARMACEUTICALS LTD
+                </option>
+                <option value="Hoffmann-La Roche ltd Basel">
+                    Hoffmann-La Roche ltd Basel
+                </option>
+                <option value="IDA FOUNDATION">
+                    IDA FOUNDATION 
+                </option>
+                <option value="LAWRENCE LABORATORIES (SUBSIDIARY OF BRISTOL MYERS SQUIBB)">
+                    LAWRENCE LABORATORIES (SUBSIDIARY OF BRISTOL MYERS SQUIBB)
+                </option>
+                <option value="GLAXOSMITHKLINE EXPORT LIMITED">
+                    GLAXOSMITHKLINE EXPORT LIMITED
+                </option>
+                <option value="SUN PHARMACEUTICAL INDUSTRIES LTD (RANBAXY LABORATORIES LIMITED)">
+                    SUN PHARMACEUTICAL INDUSTRIES LTD (RANBAXY LABORATORIES LIMITED)
+                </option>
+                <option value="AMSTELFARMA B.V.">
+                    AMSTELFARMA B.V. 
+                </option>
+                <option value="NOVARTIS PHARMA SERVICES AG ">
+                    NOVARTIS PHARMA SERVICES AG 
+                </option>
+                <option value="GILEAD SCIENCES IRELAND, INC.">
+                    GILEAD SCIENCES IRELAND, INC.
+                </option>
+                <option value="IMRES B.V.">
+                    IMRES B.V.
+                </option>
+                <option value="JANSSEN SCIENCES IRELAND UC (FORMERLY JANSSEN R&D IRELAND)">
+                    JANSSEN SCIENCES IRELAND UC (FORMERLY JANSSEN R&D IRELAND) 
+                </option>
+                <option value="MISSIONPHARMA A/S">
+                    MISSIONPHARMA A/S
+                </option>
+                <option value="SWORDS LABORATORIES">
+                    SWORDS LABORATORIES
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Shipment Mode</label>
+            <select class="form-control" name="Shipment Mode" placeholder="Enter Shipment Mode" required>
+                <option class="placeholder" selected disabled value="">Enter Shipment Mode</option>
+                <option value="Air">
+                    Air
+                </option>
+                <option value="Truck">
+                    Truck
+                </option>
+                <option value="Air Charter">
+                    Air Charter
+                </option>
+                <option value="Ocean">
+                    Ocean
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Vendor INCO Term</label>
+            <select class="form-control" name="Vendor INCO Term" placeholder="Enter Vendor INCO Term" required>
+                <option class="placeholder" selected disabled value="">Select Vendor INCO Term</option>
+                <option value="N/A - From RDC">
+                    N/A - From RDC
+                </option>
+                <option value="EXW">
+                    EXW
+                </option>
+                <option value="FCA">
+                    FCA
+                </option>
+                <option value="DDP">
+                    DDP
+                </option>
+                <option value="CIP">
+                    CIP
+                </option>
+                <option value="DAP">
+                    DAP
+                </option>
+                <option value="DDU">
+                    DDU
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Sub Classification</label>
+            <select class="form-control" name="Sub Classification"
+                placeholder="Enter you Parent Education" required>
+                <option class="placeholder" selected disabled value="">Sub Classification</option>
+                <option value="Adult">
+                    Adult
+                </option>
+                <option value="Pediatric">
+                    Pediatric
+                </option>
+                <option value="Malaria">
+                    Malaria
+                </option>
+                <option value="ACT">
+                    ACT
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fulfill Via</label>
+            <select class="form-control" name="Fulfill Via" placeholder="Fulfill Via" required>
+                <option class="placeholder" selected disabled value="">Select Fulfill Via</option>
+                <option value="From RDC">
+                    From RDC
+                </option>
+                <option value="Direct Drop">
+                    Direct Drop
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">First Line Designation</label>
+            <select class="form-control" name="First Line Designation" placeholder="First Line Designation" required>
+                <option class="radio" selected disabled value="">First Line Designation</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+            </select>
+        </div>
+        <!-- <div class="mb-3">
+            <label class="form-label">Year</label>
+            <select class="form-control" name="Year" placeholder="Year"
+                required>
+                <option class="placeholder" selected disabled value="">Select Year</option>
+                <option value="2013">
+                    2013
+                </option>
+                <option value="2014">
+                    2014
+                </option>
+                <option value="2006">
+                    2006
+                </option>
+                <option value="2008">
+                    2008
+                </option>
+                <option value="2007">
+                    2007
+                </option>
+                <option value="2009">
+                    2009
+                </option>
+                <option value="2010">
+                    2010
+                </option>
+                <option value="2011">
+                    2011
+                </option>
+                <option value="2012">
+                    2012
+                </option>
+                <option value="2015">
+                    2015
+            </select>
+        </div> -->
+        <div class="mb-3">
+            <label class="form-label">Pack Price</label>
+            <input class="form-control" type="text" name="Pack Price" placeholder="Enter Pack Price">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Weight (Kilograms)</label>
+            <input class="form-control" type="text" name="Weight (Kilograms)" placeholder="Enter Weight (Kilograms)">
+          </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict Shiping price" required />
+        </div>
+    </form>
+    <h2>
+       Shiping price is {{results}}
+    </h2>
+   <body>
+</html>
