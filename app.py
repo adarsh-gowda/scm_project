@@ -29,6 +29,7 @@ def predict_datapoint():
             Vendor=request.form.get('Vendor'),
             First_Line_Designation=request.form.get('First Line Designation'),
             Pack_Price=float(request.form.get('Pack Price')),
+            Year=request.form.get('Year'),
             Weight=float(request.form.get('Weight (Kilograms)'))
 
         )

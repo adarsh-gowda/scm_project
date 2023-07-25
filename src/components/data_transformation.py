@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 import numpy as np 
 import pandas as pd
+import scipy.sparse as sp
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
@@ -29,7 +30,7 @@ class DataTransformation:
         '''
         try:
             numerical_columns = ['Pack Price', 'Weight (Kilograms)']
-            categorical_columns = ['Country', 'Fulfill Via', 'Vendor INCO Term','Vendor', 'Shipment Mode','Sub Classification', 'First Line Designation']
+            categorical_columns = ['Country', 'Fulfill Via', 'Vendor INCO Term','Vendor', 'Shipment Mode','Sub Classification', 'First Line Designation','Year']
 
             num_pipeline= Pipeline(
                 steps=[
@@ -77,33 +78,34 @@ class DataTransformation:
 
             preprocessing_obj=self.get_data_transformer_object()
 
-            # target_column_name="Freight Cost (USD)"
+
+            target_column_name="Freight Cost (USD)"
             # numerical_columns = ['Pack Price', 'Weight (Kilograms)']
 
-            # input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
-            # target_feature_train_df=train_df[target_column_name]
-
-            # input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
-            # target_feature_test_df=test_df[target_column_name]
-
+            input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
+            target_feature_train_df=train_df[target_column_name]
+            
+            input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
+            target_feature_test_df=test_df[target_column_name]
             
             logging.info("Applying preprocessing object on training dataframe")
-            train_arr = preprocessing_obj.fit_transform(train_df)
+            input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
 
             logging.info("Applying preprocessing object on testing dataframe")
-            test_arr = preprocessing_obj.transform(test_df)
+            input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
-            # logging.info(f"input_feature_train_arr shape: {input_feature_train_arr.shape}")
-            # logging.info(f"input_feature_test_arr shape: {input_feature_test_arr.shape}")
+            logging.info(f"input_feature_train_arr shape: {input_feature_train_arr.shape}")
+            logging.info(f"input_feature_test_arr shape: {input_feature_test_arr.shape}")
             
-            # target_feature_train_arr = np.array(target_feature_train_df)
-            # target_feature_test_arr = np.array(target_feature_test_df)
+            target_feature_train_arr = np.array(target_feature_train_df)
+            target_feature_test_arr = np.array(target_feature_test_df)
             
-            # logging.info(f"target_feature_train_arr shape: {target_feature_train_arr.shape}")
-            # logging.info(f"target_feature_test_arr shape: {target_feature_test_arr.shape}")
+            target_feature_train_arr = target_feature_train_arr.reshape(-1, 1)
+            target_feature_test_arr = target_feature_test_arr.reshape(-1, 1)
 
-            # target_feature_train_arr = target_feature_train_arr.reshape(-1, 1)
-            # target_feature_test_arr = target_feature_test_arr.reshape(-1, 1)
+            logging.info(f"target_feature_train_arr shape: {target_feature_train_arr.shape}")
+            logging.info(f"target_feature_test_arr shape: {target_feature_test_arr.shape}")
+
             # print(input_feature_train_arr.dtype)
             # print(input_feature_test_arr.dtype)
             # print(target_feature_train_arr.dtype)
@@ -112,12 +114,14 @@ class DataTransformation:
             # train_arr = np.concatenate((input_feature_train_arr, target_feature_train_arr[:, np.newaxis]), axis=1)
             # test_arr = np.concatenate((input_feature_test_arr, target_feature_test_arr[:, np.newaxis]), axis=1)
 
-            # train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
-            # test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
+            train_arr = sp.hstack((input_feature_train_arr, target_feature_train_arr))
+            test_arr = sp.hstack((input_feature_test_arr, target_feature_test_arr))
 
+            train_arr = train_arr.toarray()
+            test_arr = test_arr.toarray()
 
-            logging.info(f"train_arr shape: {train_arr.shape}")
-            logging.info(f"test_arr shape: {test_arr.shape}")
+            # logging.info(f"train_arr shape: {train_arr.shape}")
+            # logging.info(f"test_arr shape: {test_arr.shape}")
 
             # train_arr = np.concatenate((input_feature_train_arr, target_feature_train_arr), axis=1)
             # test_arr = np.concatenate((input_feature_test_arr, target_feature_test_arr), axis=1)

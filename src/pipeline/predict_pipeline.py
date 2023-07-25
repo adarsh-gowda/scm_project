@@ -11,7 +11,7 @@ class PredictPipeline:
 
     def predict(self,features):
         try:
-            model_path=os.path.join("artifacts","modol.pkl")
+            model_path=os.path.join("artifacts","model.pkl")
             preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
             print("Before Loading")
             model=load_object(file_path=model_path)
@@ -36,6 +36,7 @@ class CustomData:
         Vendor: str,
         First_Line_Designation: str,
         Pack_Price: int,
+        Year: str,
         Weight: int):
 
         self.Country = Country
@@ -52,9 +53,9 @@ class CustomData:
 
         self.First_Line_Designation = First_Line_Designation
 
-        # self.Year = Year
-
         self.Pack_Price = Pack_Price
+        
+        self.Year = Year
 
         self.Weight = Weight
 
@@ -69,6 +70,7 @@ class CustomData:
                 "Vendor": [self.Vendor],
                 "First Line Designation": [self.First_Line_Designation],
                 "Pack Price": [self.Pack_Price],
+                "Year":[self.Year],
                 "Weight (Kilograms)": [self.Weight],
             }
 
