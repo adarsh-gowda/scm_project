@@ -11,6 +11,7 @@ the same time.
 The main goal is to predict the supply chain shipment pricing based on the available 
 factors in the dataset.
 
+
 ### Approach:
 The classical machine learning tasks like Data Exploration, Data Cleaning,
 Feature Engineering, Model Building and Model Testing. Try out different machine
