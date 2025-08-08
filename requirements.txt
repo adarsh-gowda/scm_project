@@ -9,4 +9,6 @@ xgboost
 dill
 Flask
 ipykernel
+boruta
+shap
 #-e .
